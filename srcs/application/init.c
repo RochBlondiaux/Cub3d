@@ -6,7 +6,7 @@
 /*   By: rblondia <rblondia@student.42-lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 20:06:12 by rblondia          #+#    #+#             */
-/*   Updated: 2022/01/22 20:34:10 by rblondia         ###   ########.fr       */
+/*   Updated: 2022/01/22 21:13:58 by rblondia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ static t_window	init_window(void *mlx)
 	window.window = mlx_new_window(mlx, window.width,
 			window.height, window.title);
 	window.image = init_image(mlx);
+	if (!window.window)
+	{
+		free(window.window);
+		perror(MLX_ERROR);
+		exit(EXIT_FAILURE);
+	}
 	return (window);
 }
 

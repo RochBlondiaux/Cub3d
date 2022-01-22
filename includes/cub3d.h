@@ -6,7 +6,7 @@
 /*   By: rblondia <rblondia@student.42-lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 18:39:51 by rblondia          #+#    #+#             */
-/*   Updated: 2022/01/22 20:28:29 by rblondia         ###   ########.fr       */
+/*   Updated: 2022/01/22 21:53:45 by rblondia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <errno.h>
 # include <math.h>
 # include <mlx.h>
+# include "../libft/libft.h"
 
 # include "settings.h"
 # include "messages.h"
@@ -48,9 +49,36 @@ typedef struct s_window {
 	t_image	image;
 }			t_window;
 
+enum e_direction {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+};
+
+enum e_type {
+	WALL,
+	FLOOR,
+	VOID
+};
+
+typedef struct s_tile
+{
+	t_v2d	location;
+	e_type	type;
+}		t_tile;
+
+typedef struct s_texture
+{
+	e_direction	face;
+	char		*path;
+}	t_texture;
+
 typedef struct s_app {
 	t_window	window;
 	void		*mlx;
+	t_texture	**textures;
+	s_tile		**tiles;
 }				t_app;
 
 typedef struct s_v2d {
@@ -72,6 +100,16 @@ void	start(t_app *app);
 void	stop(t_app *app);
 
 /**
+ * Parsing
+ */
+void	parse(t_app *app, char **args, int size);
+void	validate_arguments(int count);
+
+/**
+ * Graphics
+ */
+
+/**
  * 3D Vector
  */
 t_v3d	v3f(double x, double y, double z);
@@ -90,11 +128,9 @@ void	mul_v2d(t_v2d *v, double x, double y);
 void	div_v2d(t_v2d *v, double x, double y);
 
 /**
- * Parsing
- */
-
-/**
  * Utils
  */
+void	error(char *a);
+void	info(char *a);
 
 #endif

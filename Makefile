@@ -33,8 +33,11 @@ SRC_NAME =	main.c \
 			application/init.c \
 			application/start.c \
 			application/stop.c \
+			parsing/parser.c \
+			parsing/validator.c \
 			vectors/vector2d.c \
 			vectors/vector3d.c \
+			utils/logger.c \
 
 # Objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -58,6 +61,7 @@ all: obj $(FT_LIB) $(GLIB_LIB) $(MLX_LIB) $(NAME)
 obj:
 	@echo "$(INFO)Creating objects folder... $(NOC)"
 	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)/graphics
 	@mkdir -p $(OBJ_PATH)/application
 	@mkdir -p $(OBJ_PATH)/vectors
 	@mkdir -p $(OBJ_PATH)/parsing
