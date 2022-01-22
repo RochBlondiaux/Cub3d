@@ -1,46 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2d.c                                         :+:      :+:    :+:   */
+/*   stop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rblondia <rblondia@student.42-lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 19:40:31 by rblondia          #+#    #+#             */
-/*   Updated: 2022/01/22 19:45:39 by rblondia         ###   ########.fr       */
+/*   Created: 2022/01/22 20:06:12 by rblondia          #+#    #+#             */
+/*   Updated: 2022/01/22 20:35:36 by rblondia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_v2d	v2f(double x, double y)
+void	stop(t_app *app)
 {
-	t_v2d	v;
-
-	v.x = x;
-	v.y = y;
-	return (v);
-}
-
-void	add_v2f(t_v2d *v, double x, double y)
-{
-	v->x += x;
-	v->y += y;
-}
-
-void	sub_v2f(t_v2d *v, double x, double y)
-{
-	v->x -= x;
-	v->y -= y;
-}
-
-void	mul_v2f(t_v2d *v, double x, double y)
-{
-	v->x *= x;
-	v->y *= y;
-}
-
-void	div_v2f(t_v2d *v, double x, double y)
-{
-	v->x /= x;
-	v->y /= y;
+	mlx_destroy_image(app->mlx, app->window.image.img);
+	mlx_destroy_window(app->mlx, app->window.window);
 }

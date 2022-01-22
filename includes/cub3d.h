@@ -6,7 +6,7 @@
 /*   By: rblondia <rblondia@student.42-lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 18:39:51 by rblondia          #+#    #+#             */
-/*   Updated: 2022/01/22 19:47:17 by rblondia         ###   ########.fr       */
+/*   Updated: 2022/01/22 20:28:29 by rblondia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,61 @@
 # include <math.h>
 # include <mlx.h>
 
+# include "settings.h"
 # include "messages.h"
 
 /**
  * Structures
  */
+typedef struct s_image {
+	void	*img;
+	char	*address;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}			t_image;
+
+typedef struct s_window {
+	void	*window;
+	char	*title;
+	int		width;
+	int		height;
+	t_image	image;
+}			t_window;
+
+typedef struct s_app {
+	t_window	window;
+	void		*mlx;
+}				t_app;
 
 typedef struct s_v2d {
 	double	x;
 	double	y;
-} 			t_v2d;
+}			t_v2d;
 
 typedef struct s_v3d {
 	double	x;
 	double	y;
 	double	z;
-} 			t_v3d;
+}			t_v3d;
+
+/**
+ * Applications
+ */
+void	init(t_app *app);
+void	start(t_app *app);
+void	stop(t_app *app);
 
 /**
  * 3D Vector
  */
-t_v3d	v3f(int x, int y, int z);
-void	add_v3f(t_v3d *v, int x, int y, int z);
-void	sub_v3f(t_v3d *v, int x, int y, int z);
-void	mul_v3f(t_v3d *v, int x, int y, int z);
-void	div_v3f(t_v3d *v, int x, int y, int z);
+t_v3d	v3f(double x, double y, double z);
+void	add_v3f(t_v3d *v, double x, double y, double z);
+void	sub_v3f(t_v3d *v, double x, double y, double z);
+void	mul_v3f(t_v3d *v, double x, double y, double z);
+void	div_v3f(t_v3d *v, double x, double y, double z);
 
 /**
  * 2D Vector
