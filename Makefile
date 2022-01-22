@@ -30,6 +30,8 @@ INCDIR = includes
 
 # Sources
 SRC_NAME =	main.c \
+			vectors/vector2d.c \
+			vectors/vector3d.c \
 
 # Objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -53,6 +55,7 @@ all: obj $(FT_LIB) $(GLIB_LIB) $(MLX_LIB) $(NAME)
 obj:
 	@echo "$(INFO)Creating objects folder... $(NOC)"
 	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)/vectors
 	@mkdir -p $(OBJ_PATH)/parsing
 	@mkdir -p $(OBJ_PATH)/utils
 	@echo "$(SUCCESS)Objects folder created successfully$(NOC)"

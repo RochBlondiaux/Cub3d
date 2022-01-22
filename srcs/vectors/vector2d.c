@@ -1,25 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vector2d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rblondia <rblondia@student.42-lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 18:39:33 by rblondia          #+#    #+#             */
-/*   Updated: 2022/01/22 19:21:27 by rblondia         ###   ########.fr       */
+/*   Created: 2022/01/22 19:40:31 by rblondia          #+#    #+#             */
+/*   Updated: 2022/01/22 19:40:31 by rblondia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int main(void)
+t_v2d	v2f(double x, double y)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_v2d	v;
 
-	(void) mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-	return (EXIT_SUCCESS);
+	v.x = x;
+	v.y = y;
+	return (v);
+}
+
+void	add_v2f(t_v2d *v, double x, double y)
+{
+	v->x += x;
+	v->y += y;
+}
+
+void	sub_v2f(t_v2d *v, double x, double y)
+{
+	v->x -= x;
+	v->y -= y;
+}
+
+void	mul_v2f(t_v2d *v, double x, double y)
+{
+	v->x *= x;
+	v->y *= y;
+}
+
+void	div_v2f(t_v2d *v, double x, double y)
+{
+	v.x /= x;
+	v.y /= y;
 }
